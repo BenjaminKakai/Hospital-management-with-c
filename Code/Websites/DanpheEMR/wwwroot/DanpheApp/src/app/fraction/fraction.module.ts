@@ -3,18 +3,21 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { HashLocationStrategy, LocationStrategy } from "@angular/common";
-import { DesignationEndPoint } from './shared/Designation.endpoint';
-import { DesignationService } from "./shared/Designation.service";
-import { SharedModule } from "../shared/shared.module";
+import { DesignationEndPoint } from './shared/designation.endpoint';
 
-import {FractionComponent } from './fraction.component';
+
+import { DesignationService } from './shared/designation.service';
+
+import { SharedModule } from "../shared/shared.module";
+import { FractionComponent } from './fraction.component';
 import { DesignationAddComponent } from './settings/designation/designation-add.component';
 import { DesignationListComponent } from './settings/designation/designation-list.component';
 import { FractionRoutingModule } from './fraction-routing.module';
 import { FractionSettingComponent } from './settings/fraction-settings.component';
 import { FractionPercentAddComponent } from './settings/fractionPercent/fraction-percent-add.component';
 import { FractionPercentListComponent } from './settings/fractionPercent/fraction-percent-list.component';
-import { FractionPercentService } from './shared/Fraction-Percent.service';
+import { FractionPercentService } from './shared/fraction-percent.service';
+
 import { FractionPercentEndPoint } from './shared/fraction-percent.endpoint';
 import { FractionCalculationComponent } from './calculation/fraction-calculation.component';
 import { FractionApplicableListComponent } from './calculation/applicable/fraction-applicable-list.component';
@@ -33,8 +36,8 @@ import { FractionReportComponent } from './reports/fraction-report.component';
 import { FractionReportbyItemComponent } from './reports/fraction-report-item.component';
 import { FractionReportbyDoctorComponent } from './reports/fraction-report-doctor.component';
 
-
 @NgModule({
+
     providers: [
         DesignationService,
         DesignationEndPoint,

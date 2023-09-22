@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { MessageboxService } from '../../../../shared/messagebox/messagebox.service';
 
-import { RPT_GOVT_InpatientOutcomeModel } from './Inpatient-outcome.model';
+import { GovInpatientOutcomeModel } from './gov-inpatient-outcome.model';
+
+
 import { DLService } from "../../../../shared/dl.service";
 import { HttpClient } from '@angular/common/http';
 import * as moment from 'moment/moment';
@@ -10,20 +12,20 @@ import { InpatientServiceReportModel } from './inpatient-service-report.model';
 import { CoreService } from '../../../../core/shared/core.service';
 import { SecurityService } from '../../../../security/shared/security.service';
 import { SettingsBLService } from '../../../../settings-new/shared/settings.bl.service';
-// import { NepaliDatePipe } from '../../../../shared/pipes/nepali-date.pipe';
 import { NepaliCalendarService } from '../../../../shared/calendar/np/nepali-calendar.service';
 import { CommonFunctions } from '../../../../shared/common.functions';
+
 @Component({
   templateUrl: "./gov-inpatient-outcome-report.html",
-  // providers: [
-  //   NepaliDatePipe
-  // ],
 })
 export class GovInpatientOutcomeReportComponent {
 
+
+
   public displayReport: boolean = false;
 
-  public InpatientOutcomeTable: Array<RPT_GOVT_InpatientOutcomeModel> = new Array<RPT_GOVT_InpatientOutcomeModel>();
+public InpatientOutcomeTable: Array<GovInpatientOutcomeModel> = new Array<GovInpatientOutcomeModel>();
+
 
   public InpatientServiceSummary: InpatientServiceReportModel = new InpatientServiceReportModel()
 

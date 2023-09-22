@@ -1,18 +1,19 @@
 ﻿import { Component, Input, Output, EventEmitter } from "@angular/core";
-
-//Parse, validate, manipulate, and display dates and times in JS.
 import * as moment from 'moment/moment';
 import { MessageboxService } from "../../../shared/messagebox/messagebox.service";
 import { SecurityService } from "../../../security/shared/security.service";
-import { DesignationModel } from "../../shared/designation.model";
-import { DesignationService } from "../../shared/Designation.service";
+import { DesignationModel } from '../../shared/designation.model';
 
+
+import { DesignationService } from '../../shared/designation.service';
 
 @Component({
     selector: "designation-add",
     templateUrl: "./Designation-add.html",
 })
 export class DesignationAddComponent {
+
+
 
     @Input("designation")
     public CurrentDesignation: DesignationModel;

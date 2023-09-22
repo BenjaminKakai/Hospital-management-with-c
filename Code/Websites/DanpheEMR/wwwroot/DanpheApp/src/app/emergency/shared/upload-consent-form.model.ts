@@ -1,7 +1,7 @@
 import { FormControl, FormGroup, FormBuilder, Validators } from "@angular/forms";
 import * as moment from "moment";
 
-export class UploadCosentFormModel {
+export class UploadConsentFormModel {
   public FileId: number = 0;
   public ERPatientId: number = 0;
   public PatientId: number = 0;

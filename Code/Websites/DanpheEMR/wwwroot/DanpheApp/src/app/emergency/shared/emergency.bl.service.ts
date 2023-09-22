@@ -6,7 +6,9 @@ import { BillingTransactionItem } from '../../billing/shared/billing-transaction
 import { InPatientLabTest } from '../../labs/shared/InpatientLabTest';
 import { EmergencyDischargeSummary } from './emergency-discharge-summary.model';
 import { PatientsDLService } from '../../patients/shared/patients.dl.service';
-import { UploadCosentFormModel } from './upload-consent-form.Model';
+
+import { UploadConsentFormModel } from './upload-consent-form.model';
+
 
 @Injectable()
 export class EmergencyBLService {
@@ -178,7 +180,9 @@ export class EmergencyBLService {
       return res;
     });
   }
-  public UploadConsentForm(filesToUpload, patFile: UploadCosentFormModel) {
+  
+public UploadConsentForm(filesToUpload, patFile: UploadConsentFormModel) {
+
     try{
     let formToPost = new FormData();
     var fileName: string;

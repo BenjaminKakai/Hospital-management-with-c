@@ -1,11 +1,19 @@
 ﻿import { Component, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { DesignationModel } from '../../shared/Designation.model';
-import { DesignationService } from '../../shared/Designation.service';
-import GridColumnSettings from '../../../shared/danphe-grid/grid-column-settings.constant';
+import { DesignationModel } from '../../shared/designation.model';
+import { DesignationService } from '../../shared/designation.service';
+
+// Commented out due to missing module, needs resolution
+//import { GridColumnSettingsConstant } from '../../shared/danphe-grid/GridColumnSettings.constant';
+
+
 import { MessageboxService } from '../../../shared/messagebox/messagebox.service';
+
+
 import { RouteFromService } from '../../../shared/routefrom.service';
+
 import { GridEmitModel } from '../../../shared/danphe-grid/grid-emit.model';
+
 
 
 @Component({
@@ -24,8 +32,11 @@ export class DesignationListComponent {
 
     constructor(public DesignationService: DesignationService, public routeFromService: RouteFromService,
         public messageboxService: MessageboxService, public changeDetector: ChangeDetectorRef, public router: Router) {
-            this.DesignationGridColumns = GridColumnSettings.DesignationList;
+           // this.DesignationGridColumns = GridColumnSettings.DesignationList;
+           
     }
+
+
 
     ngOnInit() {
         this.getDesignation();

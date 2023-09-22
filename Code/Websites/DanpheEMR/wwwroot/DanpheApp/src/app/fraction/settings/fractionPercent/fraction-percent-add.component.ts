@@ -2,13 +2,18 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 //Parse, validate, manipulate, and display dates and times in JS.
 import * as moment from 'moment/moment';
-import { MessageboxService } from "../../../shared/messagebox/messagebox.service";
-import { SecurityService } from "../../../security/shared/security.service";
-import { FractionPercentModel } from "../../shared/fraction-percent.model";
-import { FractionPercentService } from "../../shared/Fraction-Percent.service";
-import { CoreService } from "../../../core/shared/core.service";
-import { Department } from "../../../settings-new/shared/department.model";
-import { FractionPercentViewModel } from "../../shared/fractionpercent.viewmodel";
+import { MessageboxService } from '../../../shared/messagebox/messagebox.service';
+
+
+import { SecurityService } from '../../security/shared/security.service';
+import { FractionPercentModel } from '../../shared/fraction-percent.model';
+
+import { FractionPercentService } from '../../shared/fraction-percent.service';
+
+
+import { CoreService } from '../../core/shared/core.service';
+
+import { FractionPercentViewModel } from '../shared/fractionpercent.viewmodel';
 
 
 @Component({
@@ -37,13 +42,11 @@ export class FractionPercentAddComponent {
     public set ShowAdd(_showAdd) {
         this.showAddPage = _showAdd;
         if (this.showAddPage) {
-          
-                let FractionPercent = new FractionPercentViewModel();
-                this.dataFromGrid = Object.assign(FractionPercent, this.dataFromGrid);
-            }
-        
-        
+            let FractionPercent = new FractionPercentViewModel();
+            this.dataFromGrid = Object.assign(FractionPercent, this.dataFromGrid);
+        }
     }
+
     MapToFractionPercent() {
         if (this.dataFromGrid != null) {
             if (this.dataFromGrid.PercentSettingId != null || this.dataFromGrid.PercentSettingId > 0) {

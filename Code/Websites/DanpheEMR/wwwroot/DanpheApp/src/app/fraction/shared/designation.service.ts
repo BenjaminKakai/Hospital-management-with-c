@@ -1,31 +1,32 @@
-﻿import { Injectable, Directive } from '@angular/core';
-import { DesignationEndPoint } from "./Designation.endpoint";
-import { DesignationModel } from './Designation.model';
+import { Injectable } from '@angular/core';
+import { DesignationEndPoint } from './designation.endpoint';
+import { DesignationModel } from './designation.model';
 
 @Injectable()
 export class DesignationService {
 
-    constructor(public DesignationEndpoint: DesignationEndPoint) {
+    constructor(public designationEndpoint: DesignationEndPoint) {
 
     }
 
     public GetDesignationList() {
-        return this.DesignationEndpoint.GetDesignationList()
+        return this.designationEndpoint.GetDesignationList()
             .map(res => { return res });
     }
 
     public AddDesignation(CurrentDesignation: DesignationModel) {
-        return this.DesignationEndpoint.AddDesignation(CurrentDesignation)
+        return this.designationEndpoint.AddDesignation(CurrentDesignation)
             .map(res => { return res });
     }
 
-    public UpdateDesignation(id: number,CurrentDesignation: DesignationModel) {
-        return this.DesignationEndpoint.UpdateDesignation(id, CurrentDesignation)
-            .map(res => { return res});
+    public UpdateDesignation(id: number, CurrentDesignation: DesignationModel) {
+        return this.designationEndpoint.UpdateDesignation(id, CurrentDesignation)
+            .map(res => { return res });
     }
 
     public GetDesignation(id: number) {
-        return this.DesignationEndpoint.GetDesignation(id)
+        return this.designationEndpoint.GetDesignation(id)
             .map(res => { return res });
     }
 }
+

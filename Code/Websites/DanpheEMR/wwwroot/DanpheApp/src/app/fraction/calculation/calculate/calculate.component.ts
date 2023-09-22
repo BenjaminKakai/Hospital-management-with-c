@@ -1,12 +1,14 @@
 import { Component, ChangeDetectorRef } from "@angular/core";
 import { VisitBLService } from '../../../appointments/shared/visit.bl.service';
 import { MessageboxService } from '../../../shared/messagebox/messagebox.service';
-import { FractionCalculationService } from "../../shared/fraction-calculation.service";
-import { DesignationService } from '../../shared/Designation.service';
+import { FractionCalculationService } from '../../shared/fraction-calculation.service';
+import { DesignationService } from '../../shared/designation.service';
+
 import { BillingTransactionItem } from "../../../billing/shared/billing-transaction-item.model";
 import { Router } from "@angular/router";
 import { FractionPercentModel } from "../../shared/fraction-percent.model";
-import { FractionPercentService } from "../../shared/Fraction-Percent.service";
+import { FractionPercentService } from '../../shared/fraction-percent.service';
+
 import { RouteFromService } from '../../../shared/routefrom.service';
 import { Department } from "../../../settings-new/shared/department.model";
 import { CoreService } from "../../../core/shared/core.service";

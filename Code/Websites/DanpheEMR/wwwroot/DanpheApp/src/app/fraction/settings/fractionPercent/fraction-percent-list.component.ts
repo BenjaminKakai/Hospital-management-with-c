@@ -1,12 +1,21 @@
 ﻿import { Component, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { FractionPercentModel } from '../../shared/fraction-percent.model';
-import GridColumnSettings from '../../../shared/danphe-grid/grid-column-settings.constant';
-import { MessageboxService } from '../../../shared/messagebox/messagebox.service';
-import { RouteFromService } from '../../../shared/routefrom.service';
+
+
+//import GridColumnSettings from '../../shared/danphe-grid/grid-column-settings.constant';
+
+import { MessageboxService } from '../../../../shared/messagebox/messagebox.service';
+
+
 import { GridEmitModel } from '../../../shared/danphe-grid/grid-emit.model';
-import { BillingBLService } from '../../../billing/shared/billing.bl.service';
-import { FractionPercentService } from '../../shared/Fraction-Percent.service';
+
+
+import { GridEmitModel } from '../../shared/danphe-grid/grid-emit.model';
+
+import { BillingBLService } from '../../../../billing/shared/billing.bl.service';
+import { FractionPercentService } from '../../shared/fraction-percent.service';
 
 
 @Component({
@@ -25,7 +34,8 @@ export class FractionPercentListComponent {
 
     constructor(public FractionPercentService: FractionPercentService, public routeFromService: RouteFromService, 
         public messageboxService: MessageboxService, public changeDetector: ChangeDetectorRef, public router: Router) {
-            this.FractionPercentGridColumns = GridColumnSettings.FractionApplicableItemList;
+            //this.FractionPercentGridColumns = GridColumnSettings.FractionApplicableItemList;
+            
     }
 
     ngOnInit() {
@@ -42,13 +52,13 @@ export class FractionPercentListComponent {
             this.showAddPage = false;
         }
         this.FractionApplicableItemList = this.FractionApplicableItemList.slice();
-
-
     }
+    
     closePopUp($event){
         this.showAddPage= false;
         this.FractionPercent= null;
     }
+    
     getFractionApplicableItemList() {
         try {
             this.FractionPercentService.GetFractionApplicableItemList()
@@ -73,7 +83,6 @@ export class FractionPercentListComponent {
 
         switch (action) {
             case 'edit': {
-             
                 this.selIndex = $event.RowIndex;
                 this.FractionPercent = $event.Data;
                 this.showAddPage = false;
@@ -82,10 +91,7 @@ export class FractionPercentListComponent {
                 break;
             }
         }
-        //this.FractionPercent = $event.Data;
-        //console.log(this.FractionPercent);
     }
-
 
     ShowCatchErrMessage(exception) {
         if (exception) {
@@ -94,7 +100,6 @@ export class FractionPercentListComponent {
             this.messageboxService.showMessage("error", ["Check error in Console log !"]);
             console.log("Error Messsage =>  " + ex.message);
             console.log("Stack Details =>   " + ex.stack);
-            //this.messageboxService.showMessage("error", [ex.message + "     " + ex.stack]);
         }
     }
 
