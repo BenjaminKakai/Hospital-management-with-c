@@ -3,39 +3,50 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DanpheEMR;
-using DanpheEMR.Sync.IRDNepal;
-using DanpheEMR.Sync;
-using System.Diagnostics;
-/*
- File: DanpheEMR.Jobs.Program.cs
- Created: 10May'18 Sudarshan
- Description: This is for batch processing of IRD-post billing.
-              This should be updated later if let's say we need to verify in India or something.
- */
+using System.Configuration;
+using System.Data.SqlClient;
 
-namespace DanpheEMR.Jobs
+
+namespace DanpheEMR.Security
 {
     class Program
     {
-        static void Main(string[] args)
+        static string connStr = ConfigurationManager.ConnectionStrings["RBAC_Connection"].ConnectionString;
+
+        public static void Main(string[] args)
+        {
+            TestRoutes();
+             
+        }
+
+
+        static void TestRoutes()
         {
 
-            //Console.WriteLine("local sync completed");
-            Console.WriteLine("sync to IRD in progress..");
+            RbacDbContext dbContext = new RbacDbContext(connStr);
 
-            #region Sync Billing -sales & Sales-return to IRD         
-            //PostToIRD remoteSync = new PostToIRD();
-            PostToIRD.SyncSalesToRemoteServer();//sync local Sales data to IRD server
-            PostToIRD.SyncSalesReturnToRemoteServer();//sync local Sales return data to IRD server
-            #endregion
+            List<DanpheRoute> allUserRoutes = RBAC.GetRoutesForUser(11);
 
-            #region Sync PHRM -sales invoice & invoice-return to IRD         
-            PostToIRD.SynchPhrmInvoiceToRemoteServer();
-            PostToIRD.SyncPhrmInvoiceReturnToRemoteServer();
-            #endregion
-            Console.WriteLine("sync to IRD completed");
-            Console.WriteLine("sync completed");
+            //below works fine..
+            //List<RbacUser> allUsers = dbContext.Users.ToList();
+            //List<RbacApplication> applications = dbContext.Applications.ToList();
+            //List<RbacPermission> permissions = dbContext.Permissions.ToList();
+            //List<RbacRole> roles = dbContext.Roles.ToList();
+            //List<DanpheRoute> routes = dbContext.Routes.ToList();
+            //List<UserRoleMap> userrolemaps = dbContext.UserRoleMaps.ToList();
+            //List<RolePermissionMap> rolePermMaps = dbContext.RolePermissionMaps.ToList();
         }
+
+        public static List<DanpheRoute> GetAllRoutes()
+        {
+            List<DanpheRoute> retList = new List<DanpheRoute>();
+            retList.Add(new DanpheRoute() { DisplayName = "Dashboard", RouteId = 1, ParentRouteId = null });
+            retList.Add(new DanpheRoute() { DisplayName = "Appointment", RouteId = 1, ParentRouteId = null });
+            retList.Add(new DanpheRoute() { DisplayName = "Clinical", RouteId = 1, ParentRouteId = null });
+
+
+            return retList;
+        }
+
     }
 }
