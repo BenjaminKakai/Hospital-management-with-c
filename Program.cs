@@ -3,45 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DanpheEMR.AccTransfer;
-using DanpheEMR.Core;
-using DanpheEMR.ServerModel;
+using DanpheEMR;
+using DanpheEMR.Sync.IRDNepal;
+using DanpheEMR.Sync;
+using System.Diagnostics;
+/*
+ File: DanpheEMR.Jobs.Program.cs
+ Created: 10May'18 Sudarshan
+ Description: This is for batch processing of IRD-post billing.
+              This should be updated later if let's say we need to verify in India or something.
+ */
 
-namespace DanpheEMR.AccTransfer
+namespace DanpheEMR.Jobs
 {
-   public class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            //if (TransferToACC.EnabledData())
-            //{
-            //    Console.WriteLine("transfer to acc in progress..");
-            //    TransferToACC obj = new TransferToACC();
-            //    var post = TransferToACC.PostData(1); //inventory transfer
-            //    Program.ShowMessage((post == 0) ? "0 Records of inventory transfer" : "inventory " + post + " records transferrd successfully");
-            //    Console.WriteLine("Billing records transfer to acc in progress..");
-            //    var Billingpost = TransferToACC.PostData(2); //billing transfer
-            //    Program.ShowMessage((Billingpost == 0) ? " 0 Records of billing transfer" : "Billing " + Billingpost + " records transferrd successfully");
-            //    Console.WriteLine("Pharmacy records transfer to acc in progress..");
-            //    var Pharmacypost = TransferToACC.PostData(3); //pharmacy transfer
-            //    Program.ShowMessage((Pharmacypost == 0) ? "0 Records of pharmacy transfer" : "Pharmacy " + Pharmacypost + " records transferrd successfully");
 
-            //    if (post >= 0 && Pharmacypost >= 0 && Billingpost >= 0)
-            //        Console.WriteLine("transferred successfully");
-            //    else
-            //        Console.WriteLine("transfer failed");
+            //Console.WriteLine("local sync completed");
+            Console.WriteLine("sync to IRD in progress..");
 
-            //}else
-            //{
-            //    Console.WriteLine("Automatic transfer not allowed!! Please contact administrator to enable Automatic Accounting Transfer...");
-            //}
-             
+            #region Sync Billing -sales & Sales-return to IRD         
+            //PostToIRD remoteSync = new PostToIRD();
+            PostToIRD.SyncSalesToRemoteServer();//sync local Sales data to IRD server
+            PostToIRD.SyncSalesReturnToRemoteServer();//sync local Sales return data to IRD server
+            #endregion
+
+            #region Sync PHRM -sales invoice & invoice-return to IRD         
+            PostToIRD.SynchPhrmInvoiceToRemoteServer();
+            PostToIRD.SyncPhrmInvoiceReturnToRemoteServer();
+            #endregion
+            Console.WriteLine("sync to IRD completed");
+            Console.WriteLine("sync completed");
         }
-        public static void ShowMessage(string  message)
-        {
-            Console.WriteLine(message);
-        }
-      
-     
     }
 }
